@@ -46,37 +46,6 @@ gm.gerenciar();
 gm.mostrarMemoria();
 ```
 
-```
-=== BEST-FIT ===
-Processo 1 (tam=5) alocado em [0-4]
-Processo 2 (tam=3) alocado em [5-7]
-Processo 3 (tam=7) alocado em [8-14]
-Memória final:
-1 1 1 1 1 2 2 2 3 3 3 3 3 3 3 0 0 0 0 0 
-
-=== FIRST-FIT ===
-Processo 4 (tam=6) alocado em [0-5]
-Processo 5 (tam=4) alocado em [6-9]
-Processo 6 (tam=5) alocado em [10-14]
-Memória final:
-4 4 4 4 4 4 5 5 5 5 6 6 6 6 6 0 0 0 0 0 
-
-=== WORST-FIT ===
-Processo 7 (tam=4) alocado em [0-3]
-Processo 8 (tam=6) alocado em [4-9]
-Processo 9 (tam=5) alocado em [10-14]
-Memória final:
-7 7 7 7 8 8 8 8 8 8 9 9 9 9 9 0 0 0 0 0 
-
-=== CIRCULAR-FIT ===
-Processo 10 (tam=5) alocado em [0-4]
-Processo 11 (tam=7) alocado em [5-11]
-Processo 12 (tam=6) alocado em [12-17]
-Memória final:
-10 10 10 10 10 11 11 11 11 11 11 12 12 12 12 12 12 0 0 0 
-
-```
-
 ---
 
 ## 💡 Funcionalidades Extras
