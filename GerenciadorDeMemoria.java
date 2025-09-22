@@ -16,16 +16,52 @@ public class GerenciadorDeMemoria {
         filaDeProcessos.add(p);
     }
     
-    public String executarBF() {
+    public void timeExecucao(int segundos) {
+        try {
+            Thread.sleep(segundos * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void algoritmoExecutando(String nomeAlgoritmo) {
         System.out.println("\n");
-        System.out.println("\n================== Executando Best-Fit ==================");
+        System.out.println("\n================== Executando " + nomeAlgoritmo + " ==================");
+
+    }
+
+
+    public String gerenciar(){
+        if (algoritmo.equals("BF")) {
+            return executarBF();
+        } else if (algoritmo.equals("FF")) {
+            return executarFF();
+        } else if (algoritmo.equals("WF")) {
+            return executarWF();
+        } else if (algoritmo.equals("CF")) {
+            return executarCF();
+        } else {
+            return "Algoritmo inválido.";
+        }
+    }
+
+    public void mostrarMemoria() {
+        System.out.print("Memória: ");
+        for (int i = 0; i < memoria.length; i++) {
+            System.out.print(memoria[i] + " ");
+        }
+        System.out.println();
+        
+    }
+
+    
+    public String executarBF() {
+        
+        algoritmoExecutando("Best-Fit");
+
         for (Processo p : filaDeProcessos) {
 
-            try {
-                Thread.sleep(300); 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            timeExecucao(3);
 
             System.out.println("Tentando alocar " + p);
             int melhorInicio = -1;
@@ -34,11 +70,7 @@ public class GerenciadorDeMemoria {
 
             while (i < memoria.length) {
 
-                try {
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+               timeExecucao(3);
 
                 if (memoria[i] == 0) {
                     int inicio = i;
@@ -70,15 +102,12 @@ public class GerenciadorDeMemoria {
     }
 
     public String executarFF() {
-        System.out.println("\n");
-        System.out.println("\n================== Executando First-Fit ==================");
+
+        algoritmoExecutando("First-Fit");
+
         for (Processo p : filaDeProcessos) {
 
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            timeExecucao(3);
 
             System.out.println("Tentando alocar " + p);
             boolean alocado = false;
@@ -108,16 +137,12 @@ public class GerenciadorDeMemoria {
     }
 
     public String executarWF() {
-        System.out.println("\n");
 
-        System.out.println("\n================== Executando Worst-Fit ==================");
+        algoritmoExecutando("Worst-Fit");
+ 
         for (Processo p : filaDeProcessos) {
 
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            timeExecucao(3);
 
             System.out.println("Tentando alocar " + p);
             int piorInicio = -1;
@@ -155,16 +180,12 @@ public class GerenciadorDeMemoria {
     }
 
     public String executarCF() {
-        System.out.println("\n");
+        "next-first"
+        algoritmoExecutando("Circular-Fit");
 
-        System.out.println("\n================== Executando Circular-Fit ==================");
         for (Processo p : filaDeProcessos) {
 
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            timeExecucao(3);
 
             System.out.println("Tentando alocar " + p);
             boolean alocado = false;
@@ -173,11 +194,7 @@ public class GerenciadorDeMemoria {
 
             do {
 
-                try {
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+               timeExecucao(3);
 
                 if (i + p.getTamanho() <= memoria.length) {
                     boolean livre = true;
@@ -208,26 +225,4 @@ public class GerenciadorDeMemoria {
         return "Circular-Fit concluído.";
     }
 
-    public String gerenciar(){
-        if (algoritmo.equals("BF")) {
-            return executarBF();
-        } else if (algoritmo.equals("FF")) {
-            return executarFF();
-        } else if (algoritmo.equals("WF")) {
-            return executarWF();
-        } else if (algoritmo.equals("CF")) {
-            return executarCF();
-        } else {
-            return "Algoritmo inválido.";
-        }
-    }
-
-    public void mostrarMemoria() {
-        System.out.print("Memória: ");
-        for (int i = 0; i < memoria.length; i++) {
-            System.out.print(memoria[i] + " ");
-        }
-        System.out.println();
-        
-    }
 }
