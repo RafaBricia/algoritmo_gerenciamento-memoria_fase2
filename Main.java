@@ -33,14 +33,14 @@ public class Main {
         System.out.println(("========================================================================="));
 
 
-        // ===== CIRCULAR-FIT =====
-        GerenciadorDeMemoria gm4 = new GerenciadorDeMemoria(20, "CF");
+        // ===== NEXT-FIT =====
+        GerenciadorDeMemoria gm4 = new GerenciadorDeMemoria(20, "NF");
         System.out.println("\n");
 
         gm4.adicionarProcesso(new Processo(10, 5));
         gm4.adicionarProcesso(new Processo(11, 7));
         gm4.adicionarProcesso(new Processo(12, 6));
-        System.out.println("CF -> " + gm4.gerenciar());
+        System.out.println("NF -> " + gm4.gerenciar());
         gm4.mostrarMemoria();
         System.out.println(("========================================================================="));
 
