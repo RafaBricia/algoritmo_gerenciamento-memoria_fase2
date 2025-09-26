@@ -14,14 +14,6 @@ class GerenciadorDeMemoria {
     }
 
 
-    public void timeExecucao(int segundos) {
-        try {
-            Thread.sleep(segundos * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public boolean alocarProcesso(Processo p) {
         if (algoritmo.equals("BF")) {
             return executarBF(p);
