@@ -11,6 +11,7 @@ public class Main {
         for (String algoritmo : algoritmos) {
             Metricas metricas = new Metricas();
             
+            // Executa 100 simulações para cada algoritmo - para obter médias mais precisas
             for (int execucao = 1; execucao <= 100; execucao++) {
                 System.out.printf("Executando %s - %d/100\n", algoritmo, execucao);
                 
@@ -20,22 +21,28 @@ public class Main {
                 int processosGerados = 0;
                 int processosDescartados = 0;
 
+                // Simulando 100 segundos de operação
                 for (int segundo = 1; segundo <= 100; segundo++) {
+
+                    // Gerando processos por segundo
                     for (int i = 0; i < 2; i++) {
                         Processo p = GeradorDeProcesso.gerarProcesso();
                         tamanhosProcessos.add(p.getTamanho());
                         processosGerados++;
                         
+                        // Tentando alocar o processo na memória
                         if (!gm.alocarProcesso(p)) {
                             processosDescartados++; 
                         }
                     }
 
+                    // Remove aleatoriamente 1 ou 2 processos por segundo
                     int processosParaRemover = random.nextInt(2) + 1; 
                     for (int i = 0; i < processosParaRemover; i++) {
                         gm.removerProcessoAleatorio();
                     }
 
+                    // Registra a ocupação da memória naquele segundo
                     ocupacoesPorSegundo.add(gm.calcularOcupacao());
                 }
 
